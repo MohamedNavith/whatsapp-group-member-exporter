@@ -29,33 +29,33 @@ The extension is designed around a clean, decoupled **Manifest V3** architecture
 ```mermaid
 flowchart TD
     subgraph UI ["Popup Interface (popup.html / popup.js)"]
-        A[User Controls: Detect / Extract / Export] --> B[Live Progress Counter & State Sync]
-        B --> C[Local Export Handler: CSV, XLSX, TSV]
+        A["User Controls: Detect / Extract / Export"] --> B["Live Progress Counter & State Sync"]
+        B --> C["Local Export Handler: CSV, XLSX, TSV"]
     end
 
     subgraph Browser ["Chrome Extension Messaging & Storage"]
-        D[(chrome.storage.local)] <-->|State Persistence| B
-        B <-->|chrome.tabs.sendMessage| E[Content Script Engine]
-        F[background.js Service Worker] -.->|Lifecycle & Default State| D
+        D[("chrome.storage.local")] <-->|State Persistence| B
+        B <-->|chrome.tabs.sendMessage| E["Content Script Engine"]
+        F["background.js Service Worker"] -.->|Lifecycle & Default State| D
     end
 
     subgraph DOM ["WhatsApp Web Page (content.js)"]
-        E --> G[Chat Header & Group Detector]
-        G --> H[Modal & Info Drawer Auto-Opener]
-        H --> I[Dynamic Scroll Container Finder]
-        I --> J[Virtualized Scroll Engine]
-        J -->|Smooth Step + scrollIntoView + wheel| K[Visible Row Scanner]
-        K --> L[DOM Normalizer & Filter]
-        L --> M[(O(1) Deduplication Map)]
+        E --> G["Chat Header & Group Detector"]
+        G --> H["Modal & Info Drawer Auto-Opener"]
+        H --> I["Dynamic Scroll Container Finder"]
+        I --> J["Virtualized Scroll Engine"]
+        J -->|Smooth Step + scrollIntoView + wheel| K["Visible Row Scanner"]
+        K --> L["DOM Normalizer & Filter"]
+        L --> M[("O(1) Deduplication Map")]
         M -->|Live Event Updates| B
     end
 
     subgraph Exporter ["Client-Side Serializer (exporter.js)"]
-        C --> N[Unicode & Emoji Normalizer]
-        C --> O[Phone Number Sanitizer]
-        C --> P[SheetJS XLSX Engine (Text Cell Formatting)]
-        C --> Q[RFC 4180 UTF-8 BOM CSV Engine]
-        C --> R[System Clipboard TSV Builder]
+        C --> N["Unicode & Emoji Normalizer"]
+        C --> O["Phone Number Sanitizer"]
+        C --> P["SheetJS XLSX Engine (Text Cell Formatting)"]
+        C --> Q["RFC 4180 UTF-8 BOM CSV Engine"]
+        C --> R["System Clipboard TSV Builder"]
     end
 ```
 
