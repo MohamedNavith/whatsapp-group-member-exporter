@@ -1,0 +1,24 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node / Dependencies
+node_modules/
+package-lock.json
+
+# IDE / Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Log Files
+*.log
+npm-debug.log*
+
+# Temporary & Build outputs
+dist/
+tmp/
+*.zip
+*.crx
