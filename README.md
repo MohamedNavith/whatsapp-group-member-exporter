@@ -59,6 +59,10 @@ flowchart TD
     end
 ```
 
+<p align="center">
+  <img src="assets/architecture.png" alt="WA Group Member Exporter Architecture Diagram" width="100%" />
+</p>
+
 ### Architectural Highlights
 
 | Component | File | Responsibility |
